@@ -1,0 +1,239 @@
+int[,,] puzzle = new int[5, 5, 5];
+
+puzzle[0, 0, 0] = 1;
+puzzle[1, 0, 0] = 1;
+puzzle[2, 0, 0] = 1;
+puzzle[3, 0, 0] = 0;
+puzzle[4, 0, 0] = 0;
+
+puzzle[0, 1, 0] = 1;
+puzzle[1, 1, 0] = 1;
+puzzle[2, 1, 0] = 1;
+puzzle[3, 1, 0] = 0;
+puzzle[4, 1, 0] = 0;
+
+puzzle[0, 2, 0] = 0;
+puzzle[1, 2, 0] = 0;
+puzzle[2, 2, 0] = 0;
+puzzle[3, 2, 0] = 0;
+puzzle[4, 2, 0] = 0;
+
+puzzle[0, 3, 0] = 0;
+puzzle[1, 3, 0] = 0;
+puzzle[2, 3, 0] = 0;
+puzzle[3, 3, 0] = 0;
+puzzle[4, 3, 0] = 0;
+
+puzzle[0, 4, 0] = 0;
+puzzle[1, 4, 0] = 0;
+puzzle[2, 4, 0] = 0;
+puzzle[3, 4, 0] = 0;
+puzzle[4, 4, 0] = 0;
+
+
+
+puzzle[0, 0, 1] = 1;
+puzzle[1, 0, 1] = 1;
+puzzle[2, 0, 1] = 1;
+puzzle[3, 0, 1] = 0;
+puzzle[4, 0, 1] = 0;
+
+puzzle[0, 1, 1] = 1;
+puzzle[1, 1, 1] = 0;
+puzzle[2, 1, 1] = 0;
+puzzle[3, 1, 1] = 0;
+puzzle[4, 1, 1] = 0;
+
+puzzle[0, 2, 1] = 1;
+puzzle[1, 2, 1] = 0;
+puzzle[2, 2, 1] = 0;
+puzzle[3, 2, 1] = 0;
+puzzle[4, 2, 1] = 0;
+
+puzzle[0, 3, 1] = 0;
+puzzle[1, 3, 1] = 0;
+puzzle[2, 3, 1] = 0;
+puzzle[3, 3, 1] = 0;
+puzzle[4, 3, 1] = 0;
+
+puzzle[0, 4, 1] = 0;
+puzzle[1, 4, 1] = 0;
+puzzle[2, 4, 1] = 0;
+puzzle[3, 4, 1] = 0;
+puzzle[4, 4, 1] = 0;
+
+
+
+puzzle[0, 0, 2] = 1;
+puzzle[1, 0, 2] = 1;
+puzzle[2, 0, 2] = 1;
+puzzle[3, 0, 2] = 0;
+puzzle[4, 0, 2] = 0;
+
+puzzle[0, 1, 2] = 1;
+puzzle[1, 1, 2] = 0;
+puzzle[2, 1, 2] = 0;
+puzzle[3, 1, 2] = 0;
+puzzle[4, 1, 2] = 0;
+
+puzzle[0, 2, 2] = 1;
+puzzle[1, 2, 2] = 0;
+puzzle[2, 2, 2] = 0;
+puzzle[3, 2, 2] = 0;
+puzzle[4, 2, 2] = 0;
+
+puzzle[0, 3, 2] = 0;
+puzzle[1, 3, 2] = 0;
+puzzle[2, 3, 2] = 0;
+puzzle[3, 3, 2] = 0;
+puzzle[4, 3, 2] = 0;
+
+puzzle[0, 4, 2] = 0;
+puzzle[1, 4, 2] = 0;
+puzzle[2, 4, 2] = 0;
+puzzle[3, 4, 2] = 0;
+puzzle[4, 4, 2] = 0;
+
+
+
+puzzle[0, 0, 3] = 1;
+puzzle[1, 0, 3] = 1;
+puzzle[2, 0, 3] = 1;
+puzzle[3, 0, 3] = 0;
+puzzle[4, 0, 3] = 0;
+
+puzzle[0, 1, 3] = 1;
+puzzle[1, 1, 3] = 0;
+puzzle[2, 1, 3] = 0;
+puzzle[3, 1, 3] = 0;
+puzzle[4, 1, 3] = 0;
+
+puzzle[0, 2, 3] = 1;
+puzzle[1, 2, 3] = 0;
+puzzle[2, 2, 3] = 0;
+puzzle[3, 2, 3] = 0;
+puzzle[4, 2, 3] = 0;
+
+puzzle[0, 3, 3] = 0;
+puzzle[1, 3, 3] = 0;
+puzzle[2, 3, 3] = 0;
+puzzle[3, 3, 3] = 0;
+puzzle[4, 3, 3] = 0;
+
+puzzle[0, 4, 3] = 0;
+puzzle[1, 4, 3] = 0;
+puzzle[2, 4, 3] = 0;
+puzzle[3, 4, 3] = 0;
+puzzle[4, 4, 3] = 0;
+
+
+
+puzzle[0, 0, 4] = 1;
+puzzle[1, 0, 4] = 1;
+puzzle[2, 0, 4] = 1;
+puzzle[3, 0, 4] = 0;
+puzzle[4, 0, 4] = 0;
+
+puzzle[0, 1, 4] = 1;
+puzzle[1, 1, 4] = 1;
+puzzle[2, 1, 4] = 1;
+puzzle[3, 1, 4] = 0;
+puzzle[4, 1, 4] = 0;
+
+puzzle[0, 2, 4] = 0;
+puzzle[1, 2, 4] = 0;
+puzzle[2, 2, 4] = 0;
+puzzle[3, 2, 4] = 0;
+puzzle[4, 2, 4] = 0;
+
+puzzle[0, 3, 4] = 0;
+puzzle[1, 3, 4] = 0;
+puzzle[2, 3, 4] = 0;
+puzzle[3, 3, 4] = 0;
+puzzle[4, 3, 4] = 0;
+
+puzzle[0, 4, 4] = 0;
+puzzle[1, 4, 4] = 0;
+puzzle[2, 4, 4] = 0;
+puzzle[3, 4, 4] = 0;
+puzzle[4, 4, 4] = 0;
+
+
+
+for (int y=4; y>=0; y--)
+{
+    Console.SetCursorPosition(46, 18 + (4 - y));
+    for (int z=0; z<=4; z++)
+    {
+        for (int x=0; x<=4; x++)
+        {
+            if (puzzle[x, y, z] == 1)
+                Console.Write("1");
+
+            else
+                Console.Write(".");
+        }
+        Console.Write("  ");
+    }
+    Console.WriteLine();
+}
+
+
+int nx = 5, ny = 5, nz = 5;
+
+string[] template = {
+                      "  +-----+",
+                      " /     /|",
+                      "+-----+ |",
+                      "| # # | +",
+                      "| # # |/",
+                      "+-----+"
+                    };
+
+int H = (ny - 1) * 3 + (nz - 1) * 2 + 6;
+int W = (nx - 1) * 6 + (nz - 1) * 2 + 9;
+char[,] ch = new char[H, W];
+
+for (int i = 0; i < H; i++)
+    for (int j = 0; j < W; j++)
+        ch[i, j] = ' ';
+
+
+for (int z = nz - 1; z >= 0; z--)
+    for (int y = 0; y < ny; y++)
+        for (int x = 0; x < nx; x++)
+        {
+            if (puzzle[x, y, z] == 1)
+            {
+                int c = x * 6 + z * 2;
+                int r = (ny - 1 - y) * 3 + (nz - 1 - z) * 2;
+
+                for (int i = 0; i < 6; i++)
+                {
+                    bool started = false;
+                    for (int k = 0; k < template[i].Length; k++)
+                    {
+                        char t = template[i][k];
+                        if (t != ' ') 
+                            started = true;
+                        if (!started) 
+                            continue;
+                        if (t == '#') 
+                            t = '1';
+                        ch[r + i, c + k] = t;
+                    }
+                }
+            }
+        }
+
+         
+for (int i = 0; i < H; i++)
+{
+    for (int j = 0; j < W; j++)
+    {
+        Console.SetCursorPosition(2 + j, 2 + i);
+        Console.Write(ch[i, j]);
+    }
+}
+
+Console.ReadLine();
