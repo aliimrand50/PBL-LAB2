@@ -1,0 +1,159 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Cubes
+{
+    internal class Program
+    {
+        
+        static void drawCupe(char[,] tablo, string[] sablon, int satir0, int sutun0)
+        {//oyle bir fonksiyonki standart küp ü kullanarak yan yana alt altta yazdırmak için ekrana tanımlama işlemi
+            for (int i = 0; i < sablon.Length; i++)
+            {
+                for (int j = 0; j < sablon[i].Length; j++)
+                {
+                    if (sablon[i][j] != '#')
+                    tablo[i + satir0, j + sutun0] = sablon[i][j];
+                }
+            }
+        }
+        static void DrawVolume(char[,] ekran, char[,,] veri, string[] sablon, int ustKayma, int solKayma)
+        {//öyle fonksiyonki cursor ve puzzle ı ekranın farklı yerlerine koymak için kayma işlemini yüklüyor
+            for (int i = veri.GetLength(0)-1; i >= 0; i--)
+            {
+                for (int j = veri.GetLength(1)-1; j >= 0; j--)
+                {
+                    for (int k = 0; k <= veri.GetLength(2)-1; k++)
+                    {
+                        int satir = j * 3 + (veri.GetLength(0)-1 - i) * 2 + ustKayma;
+                        int sutun = k * 6 + i * 2 + solKayma;
+
+                        if (veri[i, j, k] == 'x')
+                        {
+                            drawCupe(ekran, sablon, satir, sutun);
+                        }
+                    }
+                }
+            }
+        }
+        static void clearScreen(char[,] tablo)
+        {
+            //tüm consol ekranını kare kare bölmüştük burda o kareleri boşluk yapıp siliyoruz
+            for (int i = 0; i < tablo.GetLength(0); i++)
+            {
+                for (int j = 0; j < tablo.GetLength(1); j++)
+                {
+                    tablo[i, j] = ' ';
+                }
+            }
+        }
+        static void printScreen(char[,] tablo)
+        {
+            //herseferinde imlecin en sol üst köşeden başlaması için
+            Console.SetCursorPosition(0, 0);
+
+            //boşluklara atadığımız küpleri yazdırma kısmı
+            for (int i = 0; i < tablo.GetLength(0); i++)
+            {
+                for (int j = 0; j < tablo.GetLength(1); j++)
+                {
+                    Console.Write(tablo[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+        static void Main(string[] args)
+        {
+            //ekranın kaymasını engellemek için "AI"
+            Console.SetBufferSize(200, 80);
+            Console.SetWindowSize(150, 60);
+
+            //standart bir küp string olarak saklanıyor
+            string[] cupe =
+                {
+                "##+-----+",
+                "#/     /|",
+                "+-----+ |",
+                "| 4 4 | +",
+                "| 4 4 |/",
+                "+-----+"
+                    };
+
+            //tüm ekranı dizi olarka karelere bölüyoruz
+            char[,] space = new char[60, 100];
+
+            //hedef puzzle ı elde etmek için kullanacağımız alanın tanımlanması
+            char[,,] board = new char[5, 5, 5];
+            for (int i = 0; i < board.GetLength(0); i++)
+            {
+                for (int j = 0; j < board.GetLength(1); j++)
+                {
+                    for(int k = 0; k<board.GetLength(2); k++)
+                    {
+                        board[i, j, k] = '.';
+                    }
+                }
+            }
+
+            //hedef puzzle için 3 boyutlu dizi
+            char[, ,] puzzle = { {{ '.', '.', '.', '.', '.' },
+                                 { '.', '.', '.', '.', '.' },
+                                 { '.', '.', '.', '.', '.' },
+                                 { 'x', 'x', 'x', '.', '.' },
+                                 { 'x', 'x', 'x', '.', '.' }},
+
+                                {{ '.', '.', '.', '.', '.' },
+                                 { '.', '.', '.', '.', '.' },
+                                 { 'x', '.', '.', '.', '.' },
+                                 { 'x', '.', '.', '.', '.' },
+                                 { 'x', 'x', 'x', '.', '.' }},
+
+                                {{ '.', '.', '.', '.', '.' },
+                                 { '.', '.', '.', '.', '.' },
+                                 { 'x', '.', '.', '.', '.' },
+                                 { 'x', '.', '.', '.', '.' },
+                                 { 'x', 'x', 'x', '.', '.' }},
+
+                                {{ '.', '.', '.', '.', '.' },
+                                 { '.', '.', '.', '.', '.' },
+                                 { 'x', '.', '.', '.', '.' },
+                                 { 'x', '.', '.', '.', '.' },
+                                 { 'x', 'x', 'x', '.', '.' }},
+
+                                {{ '.', '.', '.', '.', '.' },
+                                 { '.', '.', '.', '.', '.' },
+                                 { '.', '.', '.', '.', '.' },
+                                 { 'x', 'x', 'x', '.', '.' },
+                                 { 'x', 'x', 'x', '.', '.' }}};
+
+            //cursor1 için 3 boyutlu dizi
+            char[,,] cursor1 ={{{ '.', '.', '.'},
+                                { 'x', '.', '.'},
+                                { 'x', 'x', '.'}},
+
+                               {{ '.', '.', '.'},
+                                { '.', '.', '.'},
+                                { '.', '.', '.'}},
+
+                               {{ '.', '.', '.'},
+                                { '.', '.', '.'},
+                                { '.', '.', '.'}}};
+
+            //ekranı her ohyun dögüsünde silmemiz gerekiyor bunun için fonksiyon
+            clearScreen(space);
+
+            //fonksiyonları çağırarak puzzle ve cursoru yazdırmak
+            DrawVolume(space, puzzle, cupe, 28, 0);
+            DrawVolume(space, cursor1, cupe, 0, 80);
+            DrawVolume(space, board, cupe, 0, 0);
+
+            //sildiğimizde yeni ekranı bastırmak içinde fonksiyon çağırıyoruz
+            printScreen(space);
+
+            Console.Read();
+        }
+    }
+}
